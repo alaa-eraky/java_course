@@ -20,19 +20,21 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        Map<String, List<City>> mappedCities = new HashMap<>();
-        List<City> cityList = countryandcities.getCitiesWithCode(countries.get(4).getCode(),
-                cities);
-        cityList.sort(Comparator.comparing(City::getPopulation).reversed());
-        mappedCities.put(countries.get(4).getCode(), cityList);
-        for (var city : mappedCities.get(countries.get(4).getCode())) {
-            System.out.println(city.getPopulation()
-                    + ": " + city.getName()
-                    + ": " + city.getCountry()
-                    + ": " + city.getCode()
-                    + ": " + city.getContinent()
-                    + ":" + city.getSurface_area());
+        for (var country : countries) {
+            Map<String, List<City>> mappedCities = new HashMap<>();
+            List<City> cityList = countryandcities.getCitiesWithCode(country.getCode(),
+                    cities);
+            cityList.sort(Comparator.comparing(City::getPopulation));
+            mappedCities.put(country.getCode(), cityList);
+            for (var city : mappedCities.get(country.getCode())) {
+                System.out.println(city.getPopulation()
+                        + ": " + city.getName()
+                        + ": " + city.getCountry()
+                        + ": " + city.getCode()
+                        + ": " + city.getContinent()
+                        + ":" + city.getSurface_area());
+            }
+            System.out.println("===========================================================");
         }
     }
 }
