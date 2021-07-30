@@ -11,8 +11,8 @@ import java.util.List;
 
 public class TablesawTitanic {
 
-    public static Table loadDataFromCSV() throws IOException {
-        Table titanicData = Table.read().csv("src/main/resources/data/titanic.csv");
+    public static Table loadDataFromCSV(String path) throws IOException {
+        Table titanicData = Table.read().csv(path);
         return titanicData;
     }
 
@@ -41,5 +41,6 @@ public class TablesawTitanic {
         data.addColumns(mappedGenderColumn);
         return data;
     }
+
 }
 
