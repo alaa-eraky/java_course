@@ -20,10 +20,10 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
         for (var country : countries) {
             Map<String, List<City>> mappedCities = new HashMap<>();
-            List<City> cityList = countryandcities.getCitiesWithCode(country.getCode(),
-                    cities);
+            List<City> cityList = countryandcities.getCitiesWithCode(country.getCode(), cities);
             cityList.sort(Comparator.comparing(City::getPopulation));
             mappedCities.put(country.getCode(), cityList);
             for (var city : mappedCities.get(country.getCode())) {
@@ -34,6 +34,8 @@ public class Main {
                         + ": " + city.getContinent()
                         + ":" + city.getSurface_area());
             }
+            Optional<City> highestPopCity = cityList.stream().max(Comparator.comparing(City::getPopulation));
+            System.out.println("Maximum population city in the country is : " + highestPopCity.get().getName());
             System.out.println("===========================================================");
         }
     }
