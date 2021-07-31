@@ -8,8 +8,8 @@ public class Main {
 
 
     public static void main(String[] arg) throws IOException {
-        String filePath = "F:\\AI iti\\Java\\city.csv";
-        String filePath2 = "F:\\AI iti\\Java\\country.csv";
+        String filePath = "src/CitiesAndCountries/city.csv";
+        String filePath2 = "src/CitiesAndCountries/country.csv";
         CountryAndCities countryandcities = new CountryAndCities();
         List<City> cities = new ArrayList<>();
         List<Country> countries = new ArrayList<>();
@@ -38,5 +38,5 @@ public class Main {
             System.out.println("Maximum population city in the country is : " + highestPopCity.get().getName());
             System.out.println("===========================================================");
         }
-    }
-}
+       
+    }}
